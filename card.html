@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        /* Custom Styles */
+        body {
+            background: linear-gradient(to bottom right, #1e5799, #2989d8);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #pricing {
+            background: rgba(225, 136, 136, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .card {
+            background: rgba(88, 18, 18, 0.2);
+            border: none;
+            border-radius: 15px;
+        }
+
+        .card-header {
+            background: #343c45;
+            color: #2c2929;
+            border: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-title {
+            font-size: 2rem;
+        }
+
+        .pricing-card-title small {
+            font-size: 1rem;
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 2px solid #007BFF;
+            color: #007BFF;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .btn-outline-dark:hover {
+            background: #007BFF;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <section id="pricing">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Youtube Subscribers</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 id="chihuahuaPrice" class="card-title pricing-card-title">$0<small
+                                        class="text-body-secondary fw-light">/mo</small></h1>
+                                <button type="button" class="w-100 btn btn-lg btn-outline-primary btn-outline-dark">Sign
+                                    up
+                                    for free</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Insta follower</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 id="labradorPrice" class="card-title pricing-card-title">$0<small
+                                        class="text-body-secondary fw-light">/mo</small></h1>
+                                <button type="button" class="w-100 btn btn-lg btn-dark">Get started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm border-dark">
+                            <div class="card-header py-3 text-bg-dark border-primary">
+                                <h4 class="my-0 fw-normal">X follower </h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 id="mastiffPrice" class="card-title pricing-card-title">$0<small
+                                        class="text-body-secondary fw-light">/mo</small></h1>
+                                <button type="button" class="w-100 btn btn-lg btn-dark">Contact us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const targetValues = {
+                chihuahua: 100,
+                labrador: 500,
+                mastiff: 900
+            };
+
+            function incrementWithEffect(element, targetValue) {
+                let currentValue = 0;
+                const incrementInterval = setInterval(function () {
+                    if (currentValue >= targetValue) {
+                        clearInterval(incrementInterval);
+                    } else {
+                        currentValue += 10; // Increment step
+                        element.textContent = `$${currentValue} +`;
+                    }
+                }, 50); // Interval duration
+            }
+
+            const chihuahuaPrice = document.getElementById("chihuahuaPrice");
+            const labradorPrice = document.getElementById("labradorPrice");
+            const mastiffPrice = document.getElementById("mastiffPrice");
+
+            incrementWithEffect(chihuahuaPrice, targetValues.chihuahua);
+            incrementWithEffect(labradorPrice, targetValues.labrador);
+            incrementWithEffect(mastiffPrice, targetValues.mastiff);
+        });
+    </script>
+</body>
+
+</html>

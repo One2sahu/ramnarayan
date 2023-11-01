@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Sign In</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom right, #1e5799, #2989d8);
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        input,
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        button {
+            background: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .toggle-btn {
+            margin-top: 30px;
+        }
+
+        #toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #007BFF;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #toggle:focus {
+            outline: none;
+        }
+
+        #form-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+            text-align: center;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form,
+        .toggle-btn {
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        /* Additional Styles */
+        input {
+            background: rgba(255, 255, 255, 0.1);
+            color: #333;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .toggle-btn {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toggle-btn button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .toggle-btn button:nth-child(1) {
+            background: #007BFF;
+            color: #fff;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .toggle-btn button:nth-child(2) {
+            background: transparent;
+            border: 2px solid #007BFF;
+            color: #007BFF;
+            margin-left: 10px;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .toggle-btn button:hover {
+            background: #0056b3;
+        }
+
+        .toggle-btn button:hover:nth-child(2) {
+            background: #007BFF;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="glass">
+            <h2 id="form-title">Sign Up</h2>
+            <form id="sign-up-form">
+                <input type="text" placeholder="Username">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button type="submit">Sign Up</button>
+            </form>
+            <form id="sign-in-form">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="toggle-btn">
+                <button id="toggle">Sign In</button>
+                <button>Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const signUpForm = document.getElementById("sign-up-form");
+        const signInForm = document.getElementById("sign-in-form");
+        const toggleButton = document.getElementById("toggle");
+        const formTitle = document.getElementById("form-title");
+
+        toggleButton.addEventListener("click", () => {
+            if (toggleButton.textContent === "Sign Up") {
+                signUpForm.style.display = "none";
+                signInForm.style.display = "block";
+                toggleButton.textContent = "Sign Up";
+                formTitle.textContent = "Sign In";
+            } else {
+                signInForm.style.display = "none";
+                signUpForm.style.display = "block";
+                toggleButton.textContent = "Sign In";
+                formTitle.textContent = "Sign Up";
+            }
+        });
+
+        // Initialize with the Sign Up form visible
+        signInForm.style.display = "none";
+    </script>
+</body>
+
+</html>
